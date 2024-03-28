@@ -4,7 +4,7 @@ import { host } from "../host";
 
 export default function AccountPage() {
   //const [token, setToken] = useState("");
-  const [saldo, setSaldo] = useState(null);
+  const [saldo, setSaldo] = useState(0);
   const [accountId, setAccountId] = useState(null);
   const [input, setInput] = useState("");
   const [transaction, setTransaction] = useState(null);
@@ -59,7 +59,7 @@ export default function AccountPage() {
 
   console.log("saldo: ", saldo);
   
-  if (saldo == null || accountId == null ) {
+  if ( accountId == null ) {
     return <div>Loading account...</div>
   } else {
     
@@ -81,7 +81,7 @@ export default function AccountPage() {
           },
           body: JSON.stringify({
             token: tokenStorage, // to find the correct account
-            transaction: transaction,
+            transaction: transaction, // always sent as a string?
           }),
         });
 
